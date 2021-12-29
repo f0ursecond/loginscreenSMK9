@@ -3,7 +3,7 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/font_style.dart';
-import 'package:flutter_application_1/login.dart';
+
 import 'package:flutter_application_1/signup.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'font_style.dart';
@@ -36,14 +36,14 @@ class MyApp extends StatelessWidget {
                     style: mainHeader,
                   ),
                   const SizedBox(
-                    height: 40.0,
+                    height: 20.0,
                   ),
                   const Image(
                     image: AssetImage('assets/images/logo.png'),
                     height: 200,
                   ),
                   const SizedBox(
-                    height: 40.0,
+                    height: 20.0,
                   ),
                   Container(
                     margin: EdgeInsets.symmetric(vertical: 10),
@@ -106,6 +106,30 @@ class MyApp extends StatelessWidget {
                         'Login',
                         style: mainHeader,
                       ),
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(top: 15.0),
+                    child: Text('Dont have an account?'),
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(top: 10.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        InkWell(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => signup()));
+                          },
+                          child: Text(
+                            'Register',
+                            style: Register,
+                          ),
+                        ),
+                      ],
                     ),
                   )
                 ],
