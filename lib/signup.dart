@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/font_style.dart';
+import 'package:flutter_application_1/signin.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -22,7 +23,7 @@ class _signupState extends State<signup> {
       body: Stack(
         children: [
           Container(
-            padding: EdgeInsets.only(top: 50.0),
+            padding: EdgeInsets.only(top: 60.0),
             width: size.width,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -30,7 +31,7 @@ class _signupState extends State<signup> {
                 Column(
                   children: [
                     Text(
-                      'Register',
+                      'REGISTER',
                       style: mainHeader,
                     ),
                     Container(
@@ -43,10 +44,12 @@ class _signupState extends State<signup> {
                         color: Colors.grey,
                       ),
                       child: const TextField(
+                        style: Phone,
                         keyboardType: TextInputType.number,
                         cursorColor: Colors.black87,
                         decoration: InputDecoration(
-                          icon: Icon(Icons.person, color: Colors.black87),
+                          icon:
+                              Icon(Icons.badge_rounded, color: Colors.black87),
                           hintText: 'Enter your NIS',
                           hintStyle: subHeader,
                           border: InputBorder.none,
@@ -63,11 +66,12 @@ class _signupState extends State<signup> {
                         color: Colors.grey,
                       ),
                       child: const TextField(
+                        style: Phone,
                         keyboardType: TextInputType.text,
                         cursorColor: Colors.black87,
                         decoration: InputDecoration(
                           icon: FaIcon(
-                            FontAwesomeIcons.idBadge,
+                            FontAwesomeIcons.userCircle,
                             color: Colors.black87,
                           ),
                           hintText: 'Enter your Name',
@@ -86,6 +90,7 @@ class _signupState extends State<signup> {
                         color: Colors.grey,
                       ),
                       child: const TextField(
+                        style: Phone,
                         keyboardType: TextInputType.text,
                         cursorColor: Colors.black87,
                         decoration: InputDecoration(
@@ -107,11 +112,44 @@ class _signupState extends State<signup> {
                         color: Colors.grey,
                       ),
                       child: const TextField(
+                        obscureText: true,
+                        style: Phone,
                         keyboardType: TextInputType.visiblePassword,
                         cursorColor: Colors.black87,
                         decoration: InputDecoration(
                           icon: Icon(Icons.lock_outline, color: Colors.black87),
+                          suffixIcon: InkWell(
+                            onTap: _TooglePasswordView,
+                            child: Icon(
+                              Icons.visibility_off,
+                              color: Colors.black87,
+                            ),
+                          ),
                           hintText: 'Enter your password',
+                          hintStyle: subHeader,
+                          border: InputBorder.none,
+                        ),
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.symmetric(vertical: 10),
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+                      width: size.width * 0.8,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        color: Colors.grey,
+                      ),
+                      child: const TextField(
+                        style: Phone,
+                        keyboardType: TextInputType.phone,
+                        cursorColor: Colors.black87,
+                        decoration: InputDecoration(
+                          icon: Icon(
+                            Icons.phone,
+                            color: Colors.black87,
+                          ),
+                          hintText: 'Enter your Phone',
                           hintStyle: subHeader,
                           border: InputBorder.none,
                         ),
@@ -132,13 +170,16 @@ class _signupState extends State<signup> {
                         alignment: Alignment.center,
                         child: Text(
                           'Register',
-                          style: mainHeader,
+                          style: Phone,
                         ),
                       ),
                     ),
                     Container(
                       margin: EdgeInsets.only(top: 15.0),
-                      child: Text('Have an account?'),
+                      child: Text(
+                        'Have an account?',
+                        style: subHeader,
+                      ),
                     ),
                     Container(
                       margin: EdgeInsets.only(top: 10.0),
@@ -146,7 +187,13 @@ class _signupState extends State<signup> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           InkWell(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => loginscreen(),
+                                  ));
+                            },
                             child: Text(
                               'Back & Login',
                               style: Register,
@@ -165,3 +212,5 @@ class _signupState extends State<signup> {
     );
   }
 }
+
+void _TooglePasswordView() {}
